@@ -3,14 +3,10 @@
 ### Objectives
 
 Groupie Tracker Geolocalization consists on mapping the different concerts locations of a certain artist/band given by the Client.
+
 <a href = "https://yandex.com/dev/maps/mapsapi/"> Yandex Map Api </a> was used to get coordinates of concerts' locations (Geocoder) and to display it on the map (JS API).
 
-**There given an API, that consists in four parts:**
 
-- Artists: containing information about some bands and artists like their name(s), image, in which year they began their activity, the date of their first album and the members.
-- Locations: consists in their last and/or upcoming concert locations.
-- Dates: consists in their last and/or upcoming concert dates.
-- Relation: does the link between all the other parts, artists, dates and locations.
 
 
 **The main page has:**
