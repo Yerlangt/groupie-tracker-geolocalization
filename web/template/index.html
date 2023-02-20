@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <link rel="icon" href="/image/bulb.png">
+    <title>GropieTrack</title>
+</head>
+<body>
+    <div class = "navigation">
+        
+        <img class="logo" src="/image/spoty.png"><br>
+        <p class = "header">GROUPIE TRACKER</h1><br>
+        <!-- <a href="http://localhost:8080/"> <button type="button" class="button">Back</button> </a> -->
+    </div>
+       
+    <div>
+        <div class = "artists-data">
+        {{ range .Artists }}
+            <div class = "artist-image">
+                <a href="http://localhost:8080/artist/{{.Id}}">
+                    <div class="image_wrapper">
+                        <!-- <div id = "loader"></div> -->
+                        <img src="/image/vinil.png" alt="vinil" width="240" height="240" class="vinil" >
+                        <img src="{{.Image}}" alt="" width="205" height="205" class="image">
+                    </div>
+                    <div class="name">
+                        <span class="text">{{.Name}}</span>
+                    </div>
+                </a>
+            </div>
+        {{end}}
+        </div>
+    </div>     
+</body>
+</html>

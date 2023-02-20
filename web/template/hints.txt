@@ -1,0 +1,12 @@
+{{ $artId := .Id }}
+    {{ range $art := .Artists }}
+        {{if eq $art.Id $artId}}
+            <img src="{{.Image}}"><br>
+            <p>
+            <label>Name: {{.Name}}</label><br>
+            <label>CreationDate: {{.CreationDate}}</label><br>
+            <label>FirstAlbum: {{.FirstAlbum}}</label>
+            </p>
+        {{end}}
+    {{end}}
+    

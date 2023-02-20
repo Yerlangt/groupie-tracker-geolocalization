@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/styles-art.css">
+    <link rel="icon" href="/image/bulb.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Artist</title>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=053d5266-ba49-4f1e-9159-b96a012464fa&lang=en_US" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        
+   
+        
+   
+        ymaps.ready(init);
+        function init(){ 
+            var myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 1
+            });
+
+            "{{ range $point := .Concerts.Points }}"
+                var latt = "{{.Latt}}"
+                var long = "{{.Long}}"
+                
+                console.log(long)
+                var myGeoObject = new ymaps.GeoObject({
+                    geometry: {
+                        type: "Point", // тип геометрии - точка
+                        coordinates: [long, latt] // координаты точки
+                    }
+                });
+
+                // Размещение геообъекта на карте.
+                myMap.geoObjects.add(myGeoObject); 
+            "{{end}}"
+            
+    }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="band">
+
+            <div class="band-data">
+                <div class="band-img">
+                    <img src="{{.Artist.Image}}">
+                </div>
+                <div class="band-name">
+                    {{.Artist.Name}}
+                </div>
+
+                <div class="member-list">
+                    <ul>
+                        {{ range .Artist.Members }}
+                        <div class="member-list-name">
+                            <li>
+                                {{.}}
+                            </li>
+                        </div>
+                        {{end}}
+                    </ul>
+                </div>
+
+                <div class="band-dates">
+                    <label>Creation Date: {{.Artist.CreationDate}}</label><br>
+                    <label>First Album: {{.Artist.FirstAlbum}}</label>
+                </div>
+
+                <div class="band-concerts">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Location</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ range $key,$value:= .Artist.Relationships}}
+
+
+                            {{range $index, $date := $value}}
+                            <tr>
+
+                                <td>{{if eq $index 0}}{{$key}} {{end}}</td>
+
+                                <td>{{$date}}</td>
+                            </tr>
+                            {{end}}
+                            {{end}}
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div id="map" class="map"></div>
+
+            
+            <div class="back-btn">
+                <a href="http://localhost:8080/"> <button type="button" class="button">Back</button> </a>
+            </div>
+        </div>
+
+        
+
+
+    </div>
+
+
+
+</body>
+
+</html>

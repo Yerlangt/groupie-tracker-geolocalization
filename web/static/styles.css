@@ -1,0 +1,166 @@
+* {
+    color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    margin: 0;
+    margin: 0;
+    padding: 0;
+}
+body{
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction:raw;
+}
+a{
+    text-decoration: none;
+}
+.navigation{
+    max-width: 400px;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    border: 1px solid black;
+    background-color:black;
+}
+.logo{
+    margin-top: 30px;
+    width: 150px;
+}
+.header{
+    text-align: center;
+    font-size: 1rem;
+    animation: color-change-groupie 3s infinite;
+    margin: 20px 0 20px 0
+}
+.artists-data{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color:rgb(51, 51, 51);
+}
+.artist-image{
+    background-color: #171717;
+    min-width: 150px;
+    border: 1px solid #171717;
+    border-radius: 15px; 
+    width: 250px;
+    height: 300px;
+    margin: 5px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+/* hover used when you mouse over them */
+.artist-image:hover {
+    background-color: #202020;
+    box-shadow: 0 0 0 4px rgb(209, 98, 204);
+    transition: 0.2s;
+}
+/*here hover will be exactly for text class in the artist-image class*/
+.artist-image:hover .text {
+    transition: 0.2s;
+    /* background-color: rgb(98, 187, 209);
+    border: 5px solid rgb(98, 187, 209);
+    border-radius: 4px; */
+    color:rgba(118, 207, 255, 0.797) !important;
+}
+.image_wrapper {
+    display: flex; 
+    justify-content:center;
+    align-items: center;
+}
+.vinil {
+    z-index: 0;
+}
+.image {
+    z-index: 2;
+    position: absolute;
+}
+.image:hover {
+    opacity: 0.4;
+    transition: 1s;
+    border-radius: 50%;
+    animation:rotation 10s linear infinite; /*run the rotation for 10s and iterate again*/
+    transform-origin:center;  /*rotate from the center*/
+}
+.name {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+@media screen and (max-width:810px){
+    .navigation {
+        max-width: none;
+    }    
+    body {
+        flex-direction: column;
+    }
+    .artist-image {
+        width: 180px;
+        height: 200px;
+    }
+    .image_wrapper img {
+        width: 140px;
+        height: 140px;
+    }
+    .logo {
+        width: 100px;
+    }
+    .text {
+        font-size: small;
+    }
+    .header{
+        font-size: small;
+    }
+} 
+@media screen and (max-width:500px){
+    .navigation {
+        max-width: none;
+    }
+    body {
+        flex-direction: column;
+    }
+    .artist-image {
+        min-width: 60px;
+        width: 90px;
+        height: 120px;
+    }
+    .image_wrapper img {
+        width: 60px;
+        height: 60px;
+    }
+    .logo {
+        width: 90px;
+    }
+    .text {
+        font-size: 10px;
+    }
+    .header{
+        font-size: small;
+    }
+}
+
+@keyframes color-change-groupie{
+    0%{
+        color: rgb(214, 94, 223);
+    }
+    50%{
+        color: rgba(118, 207, 255, 0.797);
+    }
+    100%{
+        color: rgb(214, 94, 223);
+    }
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg); /* start from 0 degree */
+    }
+    to {
+      transform: rotate(360deg) /* end at 360 degree which the same as 0 degree to create the continuous loop*/
+    }
+}
+

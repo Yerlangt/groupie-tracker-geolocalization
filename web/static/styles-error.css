@@ -1,0 +1,75 @@
+* {
+    color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    margin: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    background-color: black;
+    background-repeat: repeat;
+    overflow: scroll;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+}
+ 
+.child {
+    text-align: center;
+    font-size: 400%;
+    margin-bottom: 10px;
+    padding: 5px;
+    animation: color-change 4s infinite;
+}
+
+.child p{
+    animation: color-change 4s infinite;
+}
+
+.child1 {
+    text-align: center;
+    font-size: 200%;
+    color:rgb(255, 255, 255) !important;
+}
+.child1 a{
+    color:rgb(255, 255, 255) !important;
+}
+@keyframes color-change{
+    0%{
+        color: rgb(255, 255, 255);
+    }
+    50%{
+        color: rgb(255, 0, 0);
+    }
+    100%{
+        color: rgb(255, 255, 255);
+    }
+}
+
+@media (max-width: 800px) {
+    .child {
+        font-size: 350% !important;
+        left: 25% !important;
+    }
+    .child1 {
+        font-size: 150% !important;
+    }
+}
+
+@media (max-height: 400px) {
+    .child {
+        font-size: 300% !important;
+    }
+    .child1 {
+        font-size: 150% !important;
+        left: 32% !important;
+    }
+}
