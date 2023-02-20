@@ -93,11 +93,16 @@ func GetLocationPoints(locations []string) Coords {
 
 		request := fmt.Sprintf("https://geocode-maps.yandex.ru/1.x/?apikey=053d5266-ba49-4f1e-9159-b96a012464fa&geocode=%s+%s&format=json", pos[0], pos[1])
 
-		response, _ := http.Get(request)
+		response, err := http.Get(request)
+		if err != nil {
+			log.Fatal("could not get data: %s\n", err)
+		}
 		content, err := ioutil.ReadAll(response.Body)
-
+		if err != nil {
+			log.Fatal("could not read data: %s\n", err)
+		}
 		var data Input
-		json.Unmarshal(content, &data)
+		err = json.Unmarshal(content, &data)
 		if err != nil {
 			log.Fatal("could not marshal json: %s\n", err)
 		}
